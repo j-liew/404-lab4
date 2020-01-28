@@ -1,0 +1,43 @@
+Q1
+https://github.com/j-liew/404-lab4
+
+Q2
+The browser shows the Django default page
+"The install worked successfully! Congratulations!"
+
+Q3
+navigating to / displays a 404 page not found status page
+navigating to /polls shows the message: "Hello, world. You're at the polls index."
+
+Q4
+from the django documentation:
+"Migrations are Django’s way of propagating changes you make to your models (adding a field, deleting a model, etc.) into your database schema"
+in other words, they are used to update the DB schema to reflect the model.
+they are needed when a model is changed so that the corresponding changes are made to the DB schema
+
+Q5
+After logging in, I can see various site administration options including "Authentication and Authorization" as well as "Polls"
+To get a custom model to appear on the admin page, first the models must be created (in this case, within models.py)
+then the created models must be registered in admin.py (e.g., admin.site.register(Choice))
+
+Q6
+going to...
+/polls/38 displays "You're looking at question 38."
+/polls/38/results displays "You're looking at the results of question 38."
+/polls/38/vote displays "You're voting on question 38."
+
+using a string instead of a number results in a 404 not found page
+
+in urlpatterns in urls.py, change 'int' to 'slug'
+e.g., 
+#path('<int:question_id>/', views.detail, name='detail'),
+path('<slug:question_id>/', views.detail, name='detail'),
+
+Q7
+from the django docs:
+"The problem with this hardcoded, tightly-coupled approach is that it becomes challenging to change URLs on projects with a lot of templates"
+with a hardcoded url, if you were to change the url in views.py, you would have to also change it wherever it was hardcoded in the html.  Using the other method you would not have to change it.
+
+Q8
+The benefits of using the generic views is that it saves time, and is more likely to conform to best practices.  Also the generic views are under more scrutiny so they are likely more secure (not sure about this). 
+Generic views should be used when there is one available that is suitable for whatever it is you're trying to make
